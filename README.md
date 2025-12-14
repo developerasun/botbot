@@ -12,9 +12,9 @@ Study, coding, gym... you name it.
 
 ## run
 
-create discord app and issue bot token.
+create discord app and issue bot token. this is done on developer side, independently.
 
-and then fill `.env.local`.
+and then fill `.run.env`.
 
 ```sh
 SERVER_ID=""
@@ -29,10 +29,10 @@ in local development,
 go run main.go
 ```
 
-to deploy the bot, build the image.
+to run the bot, build the image.
 
 ```sh
-docker build -t botbot:latest .
+docker build -t botbot-discord:latest .
 ```
 
 and then in terminal,
@@ -44,9 +44,15 @@ docker
 
 or just build executable with go build.
 
+If you prefer to deploy on docker swarm, run below command. But note that this yaml and env setup is tailored to my personal on-premise server.
+
+```sh
+./deploy.sh
+```
+
 ## tmi
 
-+80% of codes written by chatgpt.
++80% of `main.go` codes written by chatgpt.
 
 ## license
 
