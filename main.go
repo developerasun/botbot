@@ -9,18 +9,25 @@ import (
 	"syscall"
 
 	"github.com/bwmarrin/discordgo"
-	"github.com/joho/godotenv"
+	env "github.com/joho/godotenv"
 )
 
 func main() {
-	_, rErr := os.ReadFile(".env.local")
-	if rErr == nil {
-		fmt.Println("load server env in local development")
-		err := godotenv.Load(".env.local")
-		if err != nil {
-			log.Fatal("Error loading .env file")
-		}
+	wd, gErr := os.Getwd()
+
+	if gErr != nil {
+		log.Fatalln(gErr.Error())
 	}
+
+	envPath := strings.Join([]string{wd, "/", ".run.env"}, "")
+	log.Println("main.go: envPath: " + envPath)
+
+	hasError := env.Load(envPath)
+	if hasError != nil {
+		log.Fatalln("main.go: can't load secrets correctly", hasError.Error())
+		return
+	}
+	log.Println("main.go: env loaded")
 
 	prefix := "Bot "
 	discord, err := discordgo.New(prefix + os.Getenv("DISCORD_BOT_TOKEN"))

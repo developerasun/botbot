@@ -12,6 +12,6 @@ RUN GOOS=linux GOARCH=amd64 go build -o ./server.run ./main.go
 FROM alpine:3.22 AS runner
 WORKDIR /botbot
 COPY --from=runtime /botbot/server.run .
-EXPOSE 3011
+EXPOSE 3012
 
 CMD ["./server.run"]

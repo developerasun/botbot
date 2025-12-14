@@ -1,5 +1,6 @@
 .env.local
 .env.example
+.run.env
 .git
 .gitignore
 1.png
