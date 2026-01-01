@@ -1,3 +1,6 @@
+![GitHub last commit](https://img.shields.io/github/last-commit/developerasun/botbot)
+![Static Badge](https://img.shields.io/badge/Is_Jake_Working_On_This_Now-No-red)
+
 # botbot
 
 A Discord bot to check in for daily work session.
