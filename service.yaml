@@ -1,17 +1,16 @@
 networks:
-  common:
+  side:
     driver: overlay
 
 services:
-  discord:
-    image: botbot-discord:latest
-    # open ports in overlay network to communicate each other
+  botbot:
+    image: hub-botbot:latest
     ports:
-      - "3012:3012"
+      - "3014:3014"
     volumes:
       - ./.run.env:/botbot/.run.env
     networks:
-      - common
+      - side
     deploy:
       mode: replicated
       replicas: 1
@@ -22,8 +21,8 @@ services:
         window: 60s
       resources:
         reservations:
-          cpus: "0.5"
-          memory: 512M
+          cpus: "0.01"
+          memory: 128M
         limits:
-          cpus: "1"
-          memory: 1024M
+          cpus: "0.01"
+          memory: 128M
